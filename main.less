@@ -1,0 +1,75 @@
+
+@color-principal: #3498db;
+@color-secundario: #2c3e50;
+@colors: #3498db, #e74c3c, #2ecc71, #f1c40f;
+
+.generate-checkboxes(@index) when (@index > 0) {
+    .checkbox-@{index} {
+        display: block;
+        padding: 10px;
+        background-color: extract(@colors, @index);
+        border: 2px solid darken(extract(@colors, @index), 10%);
+        margin-bottom: 10px;
+        input[type="checkbox"] {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            position: relative;
+            border: 2px solid #fff;
+
+        }
+    }
+    .generate-checkboxes(@index - 1);
+}
+.generate-checkboxes(4);
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: lighten(@color-principal, 40%);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: @color-secundario;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+button {
+  background-color: @color-principal;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  background-color: darken(@color-principal, 10%);
+}
